@@ -62,7 +62,7 @@ The parameters of all contollers are as follows
 |m  | mass of  the vehicle|
 | A, B| matices of  LTI system|
 | Q, R| weight for LQR (optional)|
-| K | feedback gain from LQR (optional)|
+| P, K | positive definite and feedback gain from LQR (optional)|
 | T  | runnning time   |
 | dt  | control loop period   |
 | pr, vr| reference position and velocity|
