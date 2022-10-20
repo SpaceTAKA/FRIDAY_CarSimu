@@ -26,7 +26,7 @@ Then, I plot tracking data to compare their perfotmance using `plot_graph`. I al
 
 ![predict](https://user-images.githubusercontent.com/68802350/196947560-11d3e72f-bea7-495a-bd15-bd758a245ed1.png)
 
-Next, I explain all functions, variables and parameters in this experiments.
+Next, I explain all functions, methods and parameters in this experiments.
 
 ## Function Definitions
 In this section, I define basic functions such as RuLU, Affine layer etc. Each function has `feedforward` and `feedback` methods for calculating gradient through backpropagation.
