@@ -24,6 +24,8 @@ They repeat the three steps in each iteration of for-loop. They try to achieve b
 
 Then, I plot tracking data to compare their perfotmance using `plot_graph`. I also show the prediction performance to demonstrate how fast and presicely FRIDAY learns by plotting the observed residual dynamics data `Residual` and `prelist` which stores all the prediciton data.
 
+![predict](https://user-images.githubusercontent.com/68802350/196947560-11d3e72f-bea7-495a-bd15-bd758a245ed1.png)
+
 Next, I explain all functions, variables and parameters in this experiments.
 
 ## Function Definitions
@@ -41,20 +43,29 @@ In this section, I define basic functions such as RuLU, Affine layer etc. Each f
 In this section, I define main class named 'PositioningCar' including the nominal model, the truth models and a graph plotter. To test FRIDAY perfomance in your own truth function, you change the contents of `true_dynamics` method.
 | Method | Description |
 ----|---- 
-| true_dynamics | this method returns `dx` value affected by truth models  |
+| init       | the class obeject needs mass `m` and keyword `key` to select the unknown dynamics `*1`|
+| true_dynamics | this method returns `dx` value through truth models  |
 | model_matrix | this method returns `A,B` matrix of the nominal LTI system   |
-| lqr | this method gives you feedback gain K of the nominal LTI (optional)   |
-|plot_graph | this method plots the tracking trajectory |
+| lqr | this method returns optimal feedback gain `K` of the nominal LTI (optional)   |
+|plot_graph | this method plots the tracking trajectory `*2` |
 
-Using `plot_graph`, you can take a look at other states such as `vel`, `u`.
+`*1` `"param", "multi", "enviro" ` are available.  
+`*2` Using `plot_graph`, you can take a look at other states such as `vel`, `u`.
+
+
 ## Parameters
-Before I run the main control loop, I set all parameters in this experiments. The parameters of all contollers are as follows
+The parameters of all contollers are as follows
 
 **common parameters**
 | Parameter | Description |
 ----|---- 
+|m  | mass of  the vehicle|
+| A, B| matices of  LTI system|
+| Q, R| weight for LQR (optional)|
+| K | feedback gain from LQR (optional)|
 | T  | runnning time   |
 | dt  | control loop period   |
+| pr, vr| reference position and velocity|
 | r  | reference state  |
 | ur  | reference control input   |
 | dist  | random disturbance noise on a controller   |
@@ -63,6 +74,7 @@ Before I run the main control loop, I set all parameters in this experiments. Th
 **FRIDAY**
 | Parameter | Description |
 ----|---- 
+| x_fri, u_fri| state and control input of FRIDAY|
 | invB  | this is alternative value of the inverse `B` because  `B` is non-invertible `*1`   |
 | LipR  | this is the intended value to constrain the Lipschitz constant of the DNN   |
 | v1-v4, u1-u4  |they are singular vectors of the weight to calculate the singular value through power iteration method `*2`   |
@@ -70,14 +82,24 @@ Before I run the main control loop, I set all parameters in this experiments. Th
 `*1` Because the essence of FRIDAY is directly canceling residual dynamics in state-space, `invB` works just like inverse `B` in the simple car model.  
 `*2` Power iteration method is a computatinally inexpensive way to calculate singular value.
 
+
+**State Feedback**
+| Parameter | Description |
+----|---- 
+| x_sf, u_sf| state and control input of State Feedback|
+
 **MRAC**
 | Parameter | Description |
 ----|---- 
-| sigma | this is basis function for representing uncertainty `*3`   |
-| W_hat| this is time-variant weight of `sigma`  |
-| gamma| this is learning rate of MRAC  |
+| x_mrac, u_mrac| state and control input of MRAC|
+|  x_r | state of reference model|
+| Ar, Br | matrices of reference model|
+| u_n, u_a   | nominal input and adaptive input |
+| sigma | basis function for representing uncertainty `*1`   |
+| W_hat| time-variant weight of `sigma`  |
+| gamma| learning rate  |
 
-`*3` `sigma` consists of `pos, vel, u` just the same as FRIDAY.
+`*1` `sigma` consists of `(pos, vel, u)` just the same as FRIDAY.
 
 
 
