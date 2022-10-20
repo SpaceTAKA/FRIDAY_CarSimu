@@ -75,6 +75,7 @@ The parameters of all contollers are as follows
 | Parameter | Description |
 ----|---- 
 | x_fri, u_fri| state and control input of FRIDAY|
+| R_hat| the DNN approximation to residual dynamics |
 | invB  | this is alternative value of the inverse `B` because  `B` is non-invertible `*1`   |
 | LipR  | this is the intended value to constrain the Lipschitz constant of the DNN   |
 | v1-v4, u1-u4  |they are singular vectors of the weight to calculate the singular value through power iteration method `*2`   |
