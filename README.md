@@ -20,6 +20,7 @@ They repeat the three steps in each iteration of for-loop. They try to achieve b
 
   x_sf[i,:]=x_sf[i-1,:]+ dx_sf*dt #3. Update state 
 ```
+![sine](https://user-images.githubusercontent.com/68802350/196947020-0059b621-8e7e-42b1-b511-d6e562b798b0.png)
 
 Then, I plot tracking data to compare their perfotmance using `plot_graph`. I also show the prediction performance to demonstrate how fast and presicely FRIDAY learns by plotting the observed residual dynamics data `Residual` and `prelist` which stores all the prediciton data.
 
