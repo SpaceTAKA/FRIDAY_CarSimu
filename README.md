@@ -76,9 +76,9 @@ The parameters of all contollers are as follows
 ----|---- 
 | x_fri, u_fri| state and control input of FRIDAY|
 | R_hat| the DNN approximation to residual dynamics |
-| invB  | this is alternative value of the inverse `B` because  `B` is non-invertible `*1`   |
-| LipR  | this is the intended value to constrain the Lipschitz constant of the DNN   |
-| v1-v4, u1-u4  |they are singular vectors of the weight to calculate the singular value through power iteration method `*2`   |
+| invB  |  alternative value of the inverse `B` due to  non-invertible `B`  `*1`   |
+| LipR  |  intended value to constrain the Lipschitz constant of the DNN   |
+| v1-v4, u1-u4  | singular vectors of the weight to calculate the singular value through power iteration method `*2`   |
 
 `*1` Because the essence of FRIDAY is directly canceling residual dynamics in state-space, `invB` works just like inverse `B` in the simple car model.  
 `*2` Power iteration method is a computatinally inexpensive way to calculate singular value.
