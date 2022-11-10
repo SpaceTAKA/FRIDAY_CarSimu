@@ -1,7 +1,7 @@
 # FRIDAY: Stable State Feedback Cancels Unknown Nonlinearity through Real-time Learning
 **Takahito Fujimori**
 
-This code is provided as a part of the IEEE Robotics & Automation Letter "FRIDAY: Stable State Feedback Cancels Unknown Nonlinearity through Real-time Learning"
+This code is provided as a part of "FRIDAY: Stable State Feedback Cancels Unknown Nonlinearity through Real-time Learning"
 
 ## Overview 
 In this experiment, FRIDAY controls a vehivle with unknown dynamics to track reference trajectory. The experimental setup is where FRIDAY only knows the nominal model and tries to estimate the unknown residual dynamics to cancel out in real-time. I compare the performance with those of Baseline controllers: linear full State Feedback controller and MRAC. I also demonstrate the generalization performance of the DNN to provide a view of how fast and precisely FRIDAY learns the dynamics.
