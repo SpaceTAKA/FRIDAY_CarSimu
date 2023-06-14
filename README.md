@@ -1,10 +1,10 @@
-# FRIDAY: Stable State Feedback Cancels Unknown Nonlinearity through Real-time Learning
+# FRIDAY: FRIDAY: Real-time Learning DNN-based Stable LQR controller for Unknown Differentially Flat Systems
 **Takahito Fujimori**
 
-This code is provided as a part of "FRIDAY: Stable State Feedback Cancels Unknown Nonlinearity through Real-time Learning"
+This code is provided as a part of "FRIDAY: Real-time Learning DNN-based Stable LQR controller for Unknown Differentially Flat Systems"
 
 ## Overview 
-In this experiment, FRIDAY controls a vehivle with unknown dynamics to track reference trajectory. The experimental setup is where FRIDAY only knows the nominal model and tries to estimate the unknown residual dynamics to cancel out in real-time. I compare the performance with those of Baseline controllers: linear full State Feedback controller and MRAC. I also demonstrate the generalization performance of the DNN to provide a view of how fast and precisely FRIDAY learns the dynamics.
+In this experiment, FRIDAY controls a mass system with unknown dynamics to track reference trajectory. The experimental setup is where FRIDAY only knows the nominal model and attempts to estimate the unknown residual dynamics to cancel out in real-time. We compare the performance to that of an adaptive Baseline controller. We also demonstrate the prediction performance of the DNN to provide a view of how fast and precisely FRIDAY learns the dynamics. Finally we provide an intuition about how SN-DNNs are suitable for FRIDAY’s real-time estimation, compared to another popular data-driven estimator GPs in the light of the training runtime and the mean estimation error.
 
 ## Main loop
 Each controller has three main steps:
@@ -12,7 +12,7 @@ Each controller has three main steps:
 2. Input to unknown dynamics and get `dx`  
 3. Update state `x = x + dx*dt`
 
-They repeat the three steps in each iteration of for-loop. They try to achieve better perfomance in their own way. For example, State Feedback works as follows:
+They repeat the three steps in each iteration of for-loop to achieve better perfomance in their own way. For example, State Feedback (LQR) works as follows:
 ```
   u_sf[i]= -np.dot(K,x_sf[i-1,:]-r[i,:]) + ur #1. Decide control input
 
