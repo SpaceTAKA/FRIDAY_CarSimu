@@ -114,4 +114,4 @@ The parameters and variables of all contollers are as follows
 
 
 ## Citation
-The code here is for personal and educational use only; written permission from the author is required for further use. Please cite my work as follows.
+The code here is for personal and educational use only; written permission from the author is required for further use. Please cite this work as follows.
