@@ -1,7 +1,7 @@
-# FRIDAY: Real-time Learning DNN-based Stable LQR controller for Unknown Differentially Flat Systems
+# FRIDAY: Real-time Learning DNN-based Stable LQR controller for Nonlinear Systems under Uncertain Disturbances
 **Takahito Fujimori**
 
-This code is provided as a part of "FRIDAY: Real-time Learning DNN-based Stable LQR controller for Unknown Differentially Flat Systems"
+This code is provided as a part of "FRIDAY: Real-time Learning DNN-based Stable LQR controller for Nonlinear Systems under Uncertain Disturbances"
 
 ## Overview 
 In this experiment, FRIDAY controls a mass system with unknown dynamics to track reference trajectory. The experimental setup is where FRIDAY only knows the nominal model and attempts to estimate the unknown residual dynamics to cancel out in real-time. We compare the performance to that of an adaptive Baseline controller. We also demonstrate the prediction performance of the DNN to provide a view of how fast and precisely FRIDAY learns the dynamics. Finally we provide an intuition about how SN-DNNs are suitable for FRIDAY’s real-time estimation, compared to another popular data-driven estimator GPs in the light of the training runtime and the mean estimation error.
